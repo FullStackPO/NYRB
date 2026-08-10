@@ -59,7 +59,7 @@ export const loginController = async(req, res) =>{
         const isPasswordMatch = await bcrypt.compare(password, user.password)
 
         if(!isPasswordMatch){
-            return res.json(409).json({
+            return res.status(409).json({
                 success : false,
                 message : 'Invalid password'
             })
@@ -87,5 +87,26 @@ export const loginController = async(req, res) =>{
     catch (error) {
         console.log(error)
     }
+
+}
+
+export const getmeController = async(req, res) => {
+
+    const userId = req.user.id 
+
+    const user = await userModel.findById(userId).select("-password")
+
+    if(!user){
+        return res.status(404).json({
+            success : false,
+            message : 'User Not Found'
+        })
+    }
+
+    res.status(200).json({
+        success : true,
+        message : 'User data fetched successfully.',
+        user
+    })
 
 }
