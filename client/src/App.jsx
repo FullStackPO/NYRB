@@ -1,8 +1,8 @@
 import React from 'react'
 import { RouterProvider } from 'react-router'
 import { routes } from './App.router'
-import { store } from './App.store'
-import { Provider } from '@reduxjs/toolkit'
+import { store } from './App.store.js'
+import { Provider } from 'react-redux'
 
 const App = () => {
   return (

@@ -1,0 +1,87 @@
+/* Login container */
+div {
+  box-sizing: border-box;
+}
+
+form {
+  width: 350px;
+  margin: 100px auto;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  background-color: transparent;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Heading */
+form h1 {
+  margin: 0 0 10px;
+  text-align: center;
+  font-size: 28px;
+  color: #ffffff;
+}
+
+/* Input groups */
+form > div {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+form label {
+  font-size: 16px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Inputs */
+form input {
+  width: 100%;
+  padding: 11px 12px;
+  box-sizing: border-box;
+
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  outline: none;
+
+  font-size: 14px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+form input:focus {
+  border-color: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
+}
+
+form input::placeholder {
+  color: #9ca3af;
+}
+
+/* Login button */
+form button {
+  width: 100%;
+  padding: 11px;
+
+  border: none;
+  border-radius: 7px;
+
+  background-color: #2563eb;
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+form button:hover {
+  background-color: #1d4ed8;
+}
+
+form button:active {
+  transform: scale(0.98);
+}
