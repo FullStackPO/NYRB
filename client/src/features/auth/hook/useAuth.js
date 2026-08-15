@@ -1,4 +1,4 @@
-import { useDispatch } from '@reduxjs/toolkit'
+import { useDispatch } from 'react-redux'
 import { register, login, getme } from '../services/auth.api'
 import { setUser, setLoading, setError } from '../auth.slice'
 

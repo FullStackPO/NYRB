@@ -1,4 +1,6 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router'
+import { useAuth } from '../hook/useAuth'
 
 const Register = () => {
 
@@ -6,10 +8,28 @@ const Register = () => {
   const[email, setEmail] = useState("")
   const[password, setPassword] = useState("")
 
+  const navigate = useNavigate()
+  const { registerController } = useAuth()
+
+  const submitHandler = async(e) => {
+    e.preventDefault()
+
+    const payload = {
+      username,
+      email,
+      password
+    }
+
+    await registerController(payload)
+    alert("User Register Successfully")
+    navigate("/login")
+
+  }
+
   return (
     <>
       <div>
-        <form>
+        <form onSubmit={submitHandler}>
           <h1>Register</h1>
 
           <div>

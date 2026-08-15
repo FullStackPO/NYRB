@@ -1,4 +1,7 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router'
+import { login } from '../services/auth.api'
+import { useAuth } from '../hook/useAuth'
 import '../styles/form.css'
 
 const Login = () => {
@@ -6,11 +9,27 @@ const Login = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
 
+  const navigate = useNavigate()
+  const { loginController } = useAuth()
+
+  const submitHadler = async(e) => {
+    e.preventDefault()
+
+    const payload = {
+      email,
+      password
+    }
+
+    await loginController(payload)
+    navigate("/")
+
+  }
+
 
   return (
     <>
       <div>
-        <form>
+        <form onSubmit={submitHadler}>
           <h1>Login</h1>
 
             <div>
