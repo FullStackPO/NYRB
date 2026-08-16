@@ -13,7 +13,7 @@ export function useAuth(){
             dispatch(setUser(data))
        } 
        catch (error) {
-            dispatch(setError(error))
+            dispatch(setError(error.message))
        } 
        finally {
             dispatch(setLoading(false))
@@ -28,7 +28,7 @@ export function useAuth(){
             dispatch(setUser(data))
         }
         catch (error) {
-            dispatch(setError(error))
+            dispatch(setError(error.message))
         }
         finally {
             dispatch(setLoading(false))
@@ -42,7 +42,7 @@ export function useAuth(){
             dispatch(setUser(data))
         }
         catch (error) {
-            dispatch(setError(error))
+            dispatch(setError(error.message))
         }
         finally {
             dispatch(setLoading(false))
