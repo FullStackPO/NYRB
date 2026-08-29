@@ -21,7 +21,6 @@ const Register = () => {
     }
 
     await registerController(payload)
-    alert("User Register Successfully")
     navigate("/login")
 
   }

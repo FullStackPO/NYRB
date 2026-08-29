@@ -22,7 +22,6 @@ const Login = () => {
 
     await loginController(payload)
     navigate("/")
-
   }
 
 
