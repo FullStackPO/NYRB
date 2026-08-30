@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router'
-import { login } from '../services/auth.api'
+import { Link, useNavigate } from 'react-router'
 import { useAuth } from '../hook/useAuth'
 import '../styles/form.css'
 
@@ -58,6 +57,8 @@ const Login = () => {
             </div>
 
             <button>Login</button>
+
+            <p>Don't have account&nbsp;?&nbsp;<Link to='/register'>Register</Link></p>
 
         </form>
       </div>

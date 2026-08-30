@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useNavigate } from 'react-router'
+import { Link, useNavigate } from 'react-router'
 import { useAuth } from '../hook/useAuth'
 
 const Register = () => {
@@ -71,6 +71,8 @@ const Register = () => {
           </div>
 
           <button>Register</button>
+
+          <p>Already have account&nbsp;!&nbsp;<Link to='/login'>Login</Link></p>
 
         </form>
       </div>
