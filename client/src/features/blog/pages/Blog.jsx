@@ -1,10 +1,16 @@
 import React from 'react'
+import '../styles/feed.css'
 
 const Blog = () => {
+
   return (
-    <div>
-      <h1>Welcome to the Blog Application.</h1>
-    </div>
+    <main>
+      <section>
+        <div>
+          <h1>Loading Feed...</h1>
+        </div>
+      </section>
+    </main>
   )
 }
 
