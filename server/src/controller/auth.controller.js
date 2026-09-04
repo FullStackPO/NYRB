@@ -34,9 +34,7 @@ export const registerController = async(req, res) => {
 
     } 
     catch (err) {
-        
         console.log(err)
-
     }
 
 } 
@@ -92,21 +90,26 @@ export const loginController = async(req, res) =>{
 
 export const getmeController = async(req, res) => {
 
-    const userId = req.user.id 
+    try {
+        const userId = req.user.id 
 
-    const user = await userModel.findById(userId).select("-password")
+        const user = await userModel.findById(userId).select("-password")
 
-    if(!user){
-        return res.status(404).json({
-            success : false,
-            message : 'User Not Found'
+        if(!user){
+            return res.status(404).json({
+                success : false,
+                message : 'User Not Found'
+            })
+        }
+
+        res.status(200).json({
+            success : true,
+            message : 'User data fetched successfully.',
+            user
         })
+    } 
+    catch(error){
+        console.log(error)
     }
-
-    res.status(200).json({
-        success : true,
-        message : 'User data fetched successfully.',
-        user
-    })
 
 }

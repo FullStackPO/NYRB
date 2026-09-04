@@ -6,7 +6,8 @@ const blogSlice = createSlice({
     initialState : {
         blog : [],
         loading : false,
-        error : null
+        error : null,
+        data : null
     },
 
     reducers : {
@@ -18,9 +19,12 @@ const blogSlice = createSlice({
         },
         setError : (state, action) => {
             state.error = action.payload
+        },
+        setData : (state, action) => {
+            state.data = action.payload
         }
     }
 })
 
-export const { setBlog, setLoading, setError } = blogSlice.actions
+export const { setBlog, setLoading, setError, setData } = blogSlice.actions
 export default blogSlice.reducer

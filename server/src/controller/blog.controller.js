@@ -1,4 +1,5 @@
 import blogModel from "../model/blog.model.js";
+import userModel from "../model/auth.model.js";
 
 export const createBlogController = async(req, res) => {
 
@@ -43,6 +44,23 @@ export const getBlogController = async(req, res) => {
             blog
         })
 
+    } 
+    catch (error) {
+        console.log(error)
+    }
+
+}
+
+export const getAllUserController = async(req, res) =>{
+
+    try {
+        const users = await userModel.find().select("-password")
+
+        res.status(200).json({
+            success : true,
+            message :  `All users fetched successfully.`,
+            users
+        })
     } 
     catch (error) {
         console.log(error)

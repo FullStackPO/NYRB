@@ -14,3 +14,8 @@ export async function getBlog(){
     const response = await api.get('/')
     return response.data
 }
+
+export async function getUsers(){
+    const response = await api.get('/get-user')
+    return response.data
+}
