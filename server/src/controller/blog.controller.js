@@ -41,7 +41,7 @@ export const getBlogController = async(req, res) => {
         }
 
         res.status(200).json({
-            blog
+            blogs : blog
         })
 
     } 
@@ -59,7 +59,7 @@ export const getAllUserController = async(req, res) =>{
         res.status(200).json({
             success : true,
             message :  `All users fetched successfully.`,
-            users
+            user : users
         })
     } 
     catch (error) {

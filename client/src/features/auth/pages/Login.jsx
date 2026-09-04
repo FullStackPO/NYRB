@@ -19,8 +19,14 @@ const Login = () => {
       password
     }
 
-    await loginController(payload)
-    navigate("/")
+    try{
+      await loginController(payload)
+      navigate("/")
+    }
+    catch(err){
+      alert(`wrong credientials.`)
+    }
+
   }
 
 

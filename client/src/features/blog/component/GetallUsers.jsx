@@ -1,18 +1,26 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useSelector } from 'react-redux'
+import { useBlog } from '../hook/useBlog'
 
 const GetallUsers = () => {
 
+  const { fetchUsers } = useBlog()
+
+  const data = useSelector((state) => state.blog.user)
+
+  useEffect(() => {
+    fetchUsers()
+  }, [])
+
   return (
-    <>
     <div>
-      <input type="search" name="" id="" />
-      <button>search</button>
+      {data?.map((user) => (
+        <div key={user._id}>
+          <p>{user.username}</p>
+          <p>{user.email}</p>
+        </div>
+      ))}
     </div>
-    <div>
-        <p>momo</p>
-        <p>momo@gmail.com</p>
-    </div>
-    </>
   )
 }
 

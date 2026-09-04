@@ -29,6 +29,7 @@ export function useAuth(){
         }
         catch (error) {
             dispatch(setError(error.message))
+            throw error
         }
         finally {
             dispatch(setLoading(false))
