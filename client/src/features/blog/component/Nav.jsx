@@ -1,11 +1,11 @@
 import React from 'react'
-import '../component/nav.css'
+import '../component/style.css'
 
 const Nav = () => {
   return (
     <nav>
         <h2>NYRB</h2>
-        <button>Logout</button>
+        <button className='logout-btn'>Logout</button>
     </nav>
   )
 }

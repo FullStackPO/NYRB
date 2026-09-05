@@ -2,9 +2,9 @@ main{
     display: flex;
 }
 .feed{
-    width: 70%;
+    width: 80%;
 }
 .users{
-    width : 30%;
+    width : 20%;
     padding : 5px;
 }

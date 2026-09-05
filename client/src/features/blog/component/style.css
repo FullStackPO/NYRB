@@ -1,0 +1,70 @@
+/* navbar css */
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: 10px;
+    background-color: rgb(69, 69, 69);
+    border-radius: 10px;
+    color: aliceblue;
+}
+.logout-btn{
+    background-color: blueviolet;
+    padding-inline: 12px;
+    padding-block: 12px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+}
+.logout-btn:active{
+    transform: scale(0.95);
+}
+
+/* get all users css */
+.outer{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.user-card{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: white;
+    background-color: rgb(72, 72, 72);
+    padding-inline: 8px;
+    border-radius: 10px;
+}
+.follow-btn{
+    background-color: rgb(0, 194, 29);
+    padding-inline: 8px;
+    padding-block: 8px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    font-weight: bold;
+}
+.follow-btn:active{
+    transform: scale(0.95);
+}
+
+/* get blog css */
+.blog{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-top: 10px;
+}
+.blog-card{
+    background-color: rgb(72, 72, 72);
+    padding-inline: 8px;
+    padding-block: 10px;
+    border-radius: 10px;
+    color: whitesmoke;
+}
+.user-info{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
