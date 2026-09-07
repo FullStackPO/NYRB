@@ -2,6 +2,7 @@ import express from 'express'
 import authRouter from './route/auth.route.js'
 import cookieParser from 'cookie-parser'
 import blogRouter from './route/blog.route.js'
+import userRouter from './route/user.route.js'
 import morgan from 'morgan'
 import cors from 'cors'
 
@@ -17,5 +18,6 @@ app.use(morgan("dev"))
 
 app.use('/api/auth', authRouter)
 app.use('/api/blog', blogRouter)
+app.use('/api', userRouter)
 
 export default app
