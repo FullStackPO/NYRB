@@ -1,6 +1,7 @@
 import jwt from 'jsonwebtoken'
+import blackListModel from '../model/blacklist.model.js'
 
-export const identifyUser = (req, res, next) => {
+export const identifyUser = async(req, res, next) => {
 
     const token = req.cookies.token
 
@@ -8,6 +9,17 @@ export const identifyUser = (req, res, next) => {
         return res.status(404).json({
             success : false,
             message : 'Unauthorised Token'
+        })
+    }
+
+    const blacklistedToken = await blackListModel.findOne({
+        token: token
+    })
+
+    if (blacklistedToken) {
+        return res.status(401).json({
+            success: false,
+            message: 'Token has been logged out'
         })
     }
 

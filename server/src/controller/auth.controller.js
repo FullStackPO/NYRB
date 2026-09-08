@@ -1,6 +1,7 @@
 import userModel from '../model/auth.model.js'
 import bcrypt from 'bcryptjs'
 import jwt from 'jsonwebtoken'
+import blackListModel from '../model/blacklist.model.js'
 
 export const registerController = async(req, res) => {
 
@@ -112,4 +113,28 @@ export const getmeController = async(req, res) => {
         console.log(error)
     }
 
+}
+
+export async function logoutController(req, res) {
+
+    const token = req.cookies.token
+
+    if (!token) {
+        return res.status(200).json({
+            message: "User already logged out"
+        })
+    }
+
+
+    await blackListModel.create({
+        token: token
+    })
+
+
+    res.clearCookie("token")
+
+    return res.status(200).json({
+        message: "User logged out successfully"
+    })
+    
 }
