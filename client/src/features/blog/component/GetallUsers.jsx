@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import '../component/users.css'
 import { useSelector } from 'react-redux'
 import { useBlog } from '../hook/useBlog'
 
