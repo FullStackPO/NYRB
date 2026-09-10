@@ -1,11 +1,8 @@
 import { useDispatch } from 'react-redux'
 import { register, login, getme, logout } from '../services/auth.api'
 import { setUser, setLoading, setError } from '../auth.slice'
-import  { useNavigate } from 'react-router'
 
 export function useAuth(){
-
-    const navigate = useNavigate()
 
     const dispatch = useDispatch()
 
@@ -56,9 +53,8 @@ export function useAuth(){
     async function logoutController(){
         try{
             dispatch(setLoading(true))
-            const data = await logout()
-            dispatch(setUser(data))
-            navigate('/login')
+            await logout()
+            dispatch(setUser(null))
         }
         catch (error) {
             dispatch(setError(error.message))
