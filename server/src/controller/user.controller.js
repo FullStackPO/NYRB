@@ -1,3 +1,4 @@
+import followModel from '../model/user.model.js'
 import userModel  from '../model/user.model.js'
 
 export async function followUserController(req, res){
@@ -21,7 +22,7 @@ export async function followUserController(req, res){
         })
     }
 
-    const isAlreadyFollow = await userModel.findOne({
+    const isAlreadyFollow = await followModel.findOne({
         follower : userFollower,
         followee : userFollowee
     })
@@ -32,7 +33,7 @@ export async function followUserController(req, res){
         })
     }
 
-    const followRecord = await userModel.create({
+    const followRecord = await followModel.create({
         follower : userFollower,
         followee : userFollowee
     })
@@ -40,6 +41,31 @@ export async function followUserController(req, res){
     res.status(201).json({
         message : "user follow successfully",
         follow : followRecord
+    })
+
+}
+
+export async function unfollowUserController(req, res){
+
+    const userFollower = req.user.username;
+    const userFollowee = req.params.username;
+
+
+    const isUserFollowing = await followModel.findOne({
+        follower : userFollower,
+        followee : userFollowee
+    })
+
+    if(!isUserFollowing){
+        return res.status(200).json({
+            message : `you are not following the ${userFollower}`
+        })
+    }
+
+    await followModel.findByIdAndDelete(isUserFollowing._id)
+
+    res.status(200).json({
+        message : `you unfollow the user.`
     })
 
 }
