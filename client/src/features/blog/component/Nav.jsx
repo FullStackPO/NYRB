@@ -17,8 +17,11 @@ const Nav = () => {
   return (
     <nav>
         <h2>NYRB</h2>
+        <div className='nav-buttons'>
+        <button className='createBlog-btn'>Create Blog</button>
         <button className='logout-btn'
         onClick={logoutHandler}>Logout</button>
+        </div>
     </nav>
   )
 }
