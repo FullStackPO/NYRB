@@ -1,0 +1,105 @@
+/* Form Container */
+form {
+  width: 100%;
+  max-width: 600px;
+  margin: 10px auto;
+  padding: 30px;
+  background-color: transparent;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* Heading */
+form h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  color : #ffffff;
+}
+
+/* Each field */
+form div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+/* Labels */
+form label {
+  margin-bottom: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+/* Inputs and textarea */
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  outline: none;
+  transition: 0.2s ease;
+  box-sizing: border-box;
+  font-family: inherit;
+  background-color: whitesmoke;
+}
+
+/* Input focus */
+form input:focus,
+form textarea:focus {
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+/* Textarea */
+form textarea {
+  min-height: 180px;
+  resize: vertical;
+}
+
+/* Placeholder */
+form input::placeholder,
+form textarea::placeholder {
+  color: #9ca3af;
+}
+
+/* Button */
+form button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 8px;
+  background-color: #4f46e5;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+/* Button hover */
+form button:hover {
+  background-color: #4338ca;
+}
+
+/* Button click */
+form button:active {
+  transform: scale(0.98);
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  form {
+    width: calc(100% - 30px);
+    margin: 30px auto;
+    padding: 20px;
+  }
+
+  form h1 {
+    font-size: 24px;
+  }
+}

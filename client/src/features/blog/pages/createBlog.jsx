@@ -1,35 +1,68 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useBlog } from '../hook/useBlog'
+import {useNavigate} from 'react-router'
+import '../styles/createBlog.css'
 
-const createBlog = () => {
+
+const CreateBlog = () => {
+
+  const { sendBlog } = useBlog()
+  const navigate = useNavigate()
+
+  const[btype, setBtype] = useState("")
+  const[subject, setSubject] = useState("")
+  const[content, setContent] = useState("")
+
+  const submitHandler = async(e) =>{
+      e.preventDefault()
+
+      const payload = {btype, subject, content}
+      await sendBlog(payload)
+      await navigate('/')
+
+  }
+
   return (
     <>
       <div>
-        <form>
+        <form onSubmit={submitHandler}>
           <h1>Create New Blog</h1>
 
             <div>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="btype">Blog Type</label>
               <input
-              id='email'
+              id='bytpe'
               type="text"  
-              name='email'
-              placeholder='Enter Email'
-              value={email}
-              onChange={(e)=>{setEmail(e.target.value)}}
+              name='btype'
+              placeholder='Enter Blog Type'
+              value={btype}
+              onChange={(e)=>{setBtype(e.target.value)}}
               required
               />
             </div>
 
             <div>
-              <label htmlFor="password">Password</label>
+              <label htmlFor="subject">Subject</label>
               <input
-              id = 'password'
-              type = 'password'
-              name='password'
-              placeholder='Enter Password'
-              value={password}
-              onChange={(e)=>{setPassword(e.target.value)}} 
+              id = 'subject'
+              type = 'text'
+              name='subject'
+              placeholder='Enter Subject'
+              value={subject}
+              onChange={(e)=>{setSubject(e.target.value)}} 
               required
+              />
+            </div>
+
+            <div>
+              <label htmlFor="content">Blog</label>
+              <textarea 
+                id="content"
+                name="content"
+                placeholder='Write your blog...'
+                value={content}
+                onChange={(e)=>{setContent(e.target.value)}}
+                required
               />
             </div>
 
@@ -41,4 +74,5 @@ const createBlog = () => {
   )
 }
 
-export default createBlog
+export default CreateBlog
+
