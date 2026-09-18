@@ -22,10 +22,18 @@ const CreateBlog = () => {
 
   }
 
+  const backButton = () => {
+    navigate("/")
+  }
+
   return (
     <>
       <div>
+
+        <button className='back-btn' onClick={backButton}>Back</button>
+
         <form onSubmit={submitHandler}>
+
           <h1>Create New Blog</h1>
 
             <div>

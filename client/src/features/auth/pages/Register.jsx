@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router'
 import { useAuth } from '../hook/useAuth'
+import '../styles/form.css'
 
 const Register = () => {
 
@@ -28,7 +29,7 @@ const Register = () => {
   return (
     <>
       <div>
-        <form onSubmit={submitHandler}>
+        <form className='auth-form' onSubmit={submitHandler}>
           <h1>Register</h1>
 
           <div>

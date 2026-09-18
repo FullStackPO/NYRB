@@ -33,7 +33,7 @@ const Login = () => {
   return (
     <>
       <div>
-        <form onSubmit={submitHadler}>
+        <form className='auth-form' onSubmit={submitHadler}>
           <h1>Login</h1>
 
             <div>

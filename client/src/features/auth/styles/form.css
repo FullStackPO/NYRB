@@ -2,7 +2,7 @@ div {
   box-sizing: border-box;
 }
 
-form {
+.auth-form {
   width: 350px;
   margin: 100px auto;
   padding: 30px;
@@ -16,7 +16,7 @@ form {
 }
 
 /* Heading */
-form h1 {
+.auth-form h1 {
   margin: 0 0 10px;
   text-align: center;
   font-size: 28px;
@@ -24,19 +24,19 @@ form h1 {
 }
 
 /* Input groups */
-form > div {
+.auth-form > div {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
 
-form label {
+.auth-form label {
   font-size: 16px;
   font-weight: 600;
   color: #ffffff;
 }
 
-form input {
+.auth-form input {
   width: 100%;
   padding: 11px 12px;
   box-sizing: border-box;
@@ -49,16 +49,16 @@ form input {
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-form input:focus {
+.auth-form input:focus {
   border-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.12);
 }
 
-form input::placeholder {
+.auth-form input::placeholder {
   color: #9ca3af;
 }
 
-form button {
+.auth-form button {
   width: 100%;
   padding: 11px;
 
@@ -75,15 +75,15 @@ form button {
   transition: background-color 0.2s, transform 0.1s;
 }
 
-form button:hover {
+.auth-form button:hover {
   background-color: #1d4ed8;
 }
 
-form button:active {
+.auth-form button:active {
   transform: scale(0.98);
 }
 
-form > p {
+.auth-form > p {
   color: white;
   margin-top: -15px;
 }

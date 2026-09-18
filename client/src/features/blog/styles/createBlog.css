@@ -2,7 +2,7 @@
 form {
   width: 100%;
   max-width: 600px;
-  margin: 10px auto;
+  margin: 30px auto;
   padding: 30px;
   background-color: transparent;
   border: 1px solid #e5e7eb;
@@ -102,4 +102,14 @@ form button:active {
   form h1 {
     font-size: 24px;
   }
+}
+
+.back-btn{
+  background-color: rgb(254, 41, 41);
+  border: none;
+  padding-inline : 10px;
+  padding-block: 8px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
 }
