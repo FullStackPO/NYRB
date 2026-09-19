@@ -32,7 +32,7 @@ export const getBlogController = async(req, res) => {
 
     try {
         
-        const blog = await blogModel.find().populate("user", "username email")
+        const blog = await blogModel.find().populate("user", "username email").sort({ createdAt: -1 })
 
         if(!blog){
             return res.status(200).json({
