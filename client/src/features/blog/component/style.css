@@ -66,21 +66,136 @@ nav{
 }
 
 /* get blog css */
-.blog{
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-    margin-top: 10px;
+.blog {
+  width: 100%;
+  max-width: 850px;
+  margin: 40px auto;
+  padding: 0 20px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
 }
-.blog-card{
-    background-color: rgb(72, 72, 72);
-    padding-inline: 8px;
-    padding-block: 10px;
-    border-radius: 10px;
-    color: whitesmoke;
+
+/* Blog Card */
+.blog-card {
+  background: #ffffff;
+  border: 1px solid #e5e7eb;
+  border-radius: 18px;
+  padding: 24px;
+
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+
+  transition: all 0.25s ease;
 }
-.user-info{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+
+.blog-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* User Section */
+.user-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 18px;
+  margin-bottom: 18px;
+
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Avatar */
+.avatar {
+  width: 45px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* User Details */
+.details h3 {
+  margin: 0;
+
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+.details p {
+  margin: 3px 0 0;
+
+  font-size: 13px;
+  color: #6b7280;
+}
+
+/* Blog Type */
+.btype {
+  padding: 6px 13px;
+
+  border-radius: 20px;
+
+  background: #eef2ff;
+  color: #4f46e5;
+
+  font-size: 13px;
+  font-weight: 600;
+
+  text-transform: capitalize;
+}
+
+/* Blog Content */
+.blog-content p {
+  margin: 0;
+
+  color: #374151;
+
+  font-size: 16px;
+  line-height: 1.8;
+
+  white-space: pre-wrap;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .blog {
+    margin: 20px auto;
+    padding: 0 12px;
+  }
+
+  .blog-card {
+    padding: 18px;
+    border-radius: 15px;
+  }
+
+  .user-info {
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .btype {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .blog-content p {
+    font-size: 15px;
+  }
 }

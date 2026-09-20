@@ -15,22 +15,34 @@ const GetallBlog = () => {
     console.log(blog)
 
   return (
-    <div className='blog'>
-      {blog?.map((data) => (
-        <div className='blog-card'>
-        <div className='user-info'>
-          <div className='details'>
-            <p>{data.user.username}</p>
+    <div className="blog">
+    {blog?.map((data) => (
+    <div className="blog-card" key={data._id}>
+      
+      <div className="user-info">
+        <div className="user">
+          <div className="avatar">
+            {data.user.username.charAt(0).toUpperCase()}
+          </div>
+
+          <div className="details">
+            <h3>{data.user.username}</h3>
             <p>{data.user.email}</p>
           </div>
-          <div className='btype'>
-          <p>{data.btype}</p>
-          </div>
         </div>
+
+        <span className="btype">
+          {data.btype}
+        </span>
+      </div>
+
+      <div className="blog-content">
         <p>{data.content}</p>
-        </div>
-      ))}
+      </div>
+
     </div>
+  ))}
+</div>
   )
 }
 
