@@ -79,7 +79,7 @@ nav{
 
 /* Blog Card */
 .blog-card {
-  background: #ffffff;
+  background: #4949496b;
   border: 1px solid #e5e7eb;
   border-radius: 18px;
   padding: 24px;
@@ -136,14 +136,14 @@ nav{
 
   font-size: 16px;
   font-weight: 600;
-  color: #111827;
+  color: #ffffff;
 }
 
 .details p {
   margin: 3px 0 0;
 
   font-size: 13px;
-  color: #6b7280;
+  color: #dfeaff;
 }
 
 /* Blog Type */
@@ -165,7 +165,7 @@ nav{
 .blog-content p {
   margin: 0;
 
-  color: #374151;
+  color: #ffffff;
 
   font-size: 16px;
   line-height: 1.8;
