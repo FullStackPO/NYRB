@@ -1,17 +1,10 @@
 import followModel from '../model/user.model.js'
-import userModel  from '../model/user.model.js'
+import userModel  from '../model/auth.model.js'
 
 export async function followUserController(req, res){
 
     const userFollower = req.user.username;
     const userFollowee = req.params.username;
-
-    console.log("Follower:", userFollower);
-    console.log("Followee:", userFollowee);
-    console.log("Params:", req.params);
-
-    const allUsers = await userModel.find({}, { username: 1 });
-    console.log("Users in DB:", allUsers);
     
     if(userFollowee == userFollower){
         return res.status(400).json({
@@ -21,9 +14,7 @@ export async function followUserController(req, res){
 
     const isFolloweeExist = await userModel.findOne({
         username : userFollowee
-    })
-
-    console.log(isFolloweeExist)
+    }).select("-password")
 
     if(!isFolloweeExist){
         return res.status(401).json({   
