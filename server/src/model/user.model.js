@@ -1,18 +1,18 @@
 import mongoose from 'mongoose'
 
 const followSchema = new mongoose.Schema({
-
-    follower : {
-        type : String,
-        required : true
+    follower: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "pracusers",
+        required: true
     },
 
-    followee : {
-        type : String,
-        required : true
+    followee: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "pracusers",
+        required: true
     }
-}, 
-{timestamps : true})
+}, { timestamps: true })
 
 const followModel = mongoose.model("follow", followSchema)
 

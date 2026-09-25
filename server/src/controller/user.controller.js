@@ -1,71 +1,119 @@
 import followModel from '../model/user.model.js'
 import userModel  from '../model/auth.model.js'
 
-export async function followUserController(req, res){
+export async function followUserController(req, res) {
+    try {
+        const userFollower = req.user.id
+        const username = req.params.username
 
-    const userFollower = req.user.username;
-    const userFollowee = req.params.username;
-    
-    if(userFollowee == userFollower){
-        return res.status(400).json({
-            message : "user cannot follow own"
+        const userFollowee = await userModel.findOne({
+            username: username
+        })
+
+        if (!userFollowee) {
+            return res.status(404).json({
+                message: "User does not exist"
+            })
+        }
+
+        if (userFollower === userFollowee._id.toString()) {
+            return res.status(400).json({
+                message: "User cannot follow themselves"
+            })
+        }
+
+        const isAlreadyFollow = await followModel.findOne({
+            follower: userFollower,
+            followee: userFollowee._id
+        })
+
+        if (isAlreadyFollow) {
+            return res.status(200).json({
+                message: `You are already following ${userFollowee.username}`
+            })
+        }
+
+        const followRecord = await followModel.create({
+            follower: userFollower,
+            followee: userFollowee._id
+        })
+
+        res.status(201).json({
+            message: "User followed successfully",
+            follow: followRecord
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
         })
     }
-
-    const isFolloweeExist = await userModel.findOne({
-        username : userFollowee
-    }).select("-password")
-
-    if(!isFolloweeExist){
-        return res.status(401).json({   
-            message : "user not exist"
-        })
-    }
-
-    const isAlreadyFollow = await followModel.findOne({
-        follower : userFollower,
-        followee : userFollowee
-    })
-    
-    if(isAlreadyFollow){
-        return res.status(200).json({
-            message : `you already following ${userFollowee}`
-        })
-    }
-
-    const followRecord = await followModel.create({
-        follower : userFollower,
-        followee : userFollowee
-    })
-
-    res.status(201).json({
-        message : "user follow successfully",
-        follow : followRecord
-    })
-
 }
 
-export async function unfollowUserController(req, res){
+export async function unfollowUserController(req, res) {
+    try {
+        const userFollower = req.user.id
+        const username = req.params.username
 
-    const userFollower = req.user.username;
-    const userFollowee = req.params.username;
+
+        const userFollowee = await userModel.findOne({
+            username: username
+        })
+
+        if (!userFollowee) {
+            return res.status(404).json({
+                message: "User does not exist"
+            })
+        }
+
+        const isUserFollowing = await followModel.findOne({
+            follower: userFollower,
+            followee: userFollowee._id
+        })
+
+        if (!isUserFollowing) {
+            return res.status(200).json({
+                message: `You are not following ${userFollowee.username}`
+            })
+        }
 
 
-    const isUserFollowing = await followModel.findOne({
-        follower : userFollower,
-        followee : userFollowee
-    })
+        await followModel.findByIdAndDelete(isUserFollowing._id)
 
-    if(!isUserFollowing){
-        return res.status(200).json({
-            message : `you are not following the ${userFollower}`
+        res.status(200).json({
+            message: `You unfollowed ${userFollowee.username}`
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
         })
     }
+}
 
-    await followModel.findByIdAndDelete(isUserFollowing._id)
+export async function getFollowedUserController(req, res) {
+    try {
+        const userID = req.user.id
 
-    res.status(200).json({
-        message : `you unfollow the user.`
-    })
+        const followedUser = await followModel
+            .find({ follower: userID })
+            .populate("followee", "_id username email")
 
+        if (followedUser.length === 0) {
+            return res.status(200).json({
+                message: "You aren't following anyone.",
+                followedUser: []
+            })
+        }
+
+        res.status(200).json({
+            message: "Your following list.",
+            followedUser
+        })
+
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        })
+    }
 }
