@@ -19,3 +19,8 @@ export async function getUsers(){
     const response = await api.get('/get-user')
     return response.data
 }
+
+export async function getFollowingusers(){
+    const response = await api.get('/getfolloweduser')
+    return response.data
+}

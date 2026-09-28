@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux'
-import { createBlog, getBlog, getUsers } from '../services/api.service'
+import { createBlog, getBlog, getUsers, getFollowingusers } from '../services/api.service'
 import { setBlog, setLoading, setError, setUser } from '../blog.slice'
 
 export const useBlog = () => {
@@ -50,6 +50,20 @@ export const useBlog = () => {
 
     }
 
-    return { sendBlog, fetchBlog, fetchUsers }
+    async function fetchfollowinguser(){
+        try{
+            dispatch(setLoading(true))
+            const data = await getFollowingusers()
+            dispatch(setUser(data.follow))
+        }
+        catch(err){
+            dispatch(setError(err.message))
+        }
+        finally{
+            dispatch(setLoading(false))
+        }
+    }
+
+    return { sendBlog, fetchBlog, fetchUsers, fetchfollowinguser }
 
 }
