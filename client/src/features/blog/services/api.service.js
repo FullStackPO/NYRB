@@ -20,7 +20,8 @@ export async function getUsers(){
     return response.data
 }
 
-export async function getFollowingusers(){
-    const response = await api.get('/getfolloweduser')
+export async function getFollowingList(){
+    const response = await axios.get('http://localhost:3000/api/getfolloweduser')
+    console.log(response)
     return response.data
 }

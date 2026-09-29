@@ -12,8 +12,6 @@ const GetallBlog = () => {
         fetchBlog()
     }, [])
 
-    console.log(blog)
-
   return (
     <div className="blog">
     {blog?.map((data) => (
