@@ -14,14 +14,3 @@ export async function getBlog(){
     const response = await api.get('/')
     return response.data
 }
-
-export async function getUsers(){
-    const response = await api.get('/get-user')
-    return response.data
-}
-
-export async function getFollowingList(){
-    const response = await axios.get('http://localhost:3000/api/getfolloweduser')
-    console.log(response)
-    return response.data
-}
